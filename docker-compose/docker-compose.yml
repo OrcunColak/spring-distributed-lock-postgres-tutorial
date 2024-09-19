@@ -1,0 +1,17 @@
+# psql -d db -U postgres
+version: "3.9"
+services:
+  postgresql:
+    image: postgres
+    container_name: postgresql1
+    restart: always
+    environment:
+      # See https://stackoverflow.com/questions/58258624/initialize-postgres-container-from-docker-compose-file
+      # This optional environment variable is used in conjunction with POSTGRES_PASSWORD to set a user and its password.
+      # This variable will create the specified user with superuser power and a database with the same name.
+      # If it is not specified, then the default user of postgres will be used.
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db
+    ports:
+      - "5432:5432"
